@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 // Components
 import ParallaxBackground from "./components/ParallaxBackground";
 import Header from "./components/Header";
+import BrandLogos from "./components/BrandLogos";
 import PresetSelector from "./components/PresetSelector";
 import CompatibilityEngine from "./components/CompatibilityEngine";
 import ComponentSelector from "./components/ComponentSelector";
@@ -166,6 +167,9 @@ function App() {
             presets={presetBuilds}
             onApplyPreset={handleApplyPreset}
           />
+
+          {/* Infinite Hardware Partner Logo Marquee */}
+          <BrandLogos />
         </section>
 
         {/* Main two-column layout */}
