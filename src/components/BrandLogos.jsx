@@ -1,7 +1,7 @@
 // ============================================================
 // BrandLogos.jsx
-// Infinite scrolling / auto-looping partner hardware vendor logos
-// Similar to modern tech landing pages (ClientLogos / AutoLoopCards)
+// High-visibility, prominent PC hardware vendor logos
+// Auto-looping infinite scrolling marquee
 // ============================================================
 
 const brandLogos = [
@@ -9,9 +9,9 @@ const brandLogos = [
     name: "NVIDIA",
     sub: "GEFORCE RTX",
     svg: (
-      <svg viewBox="0 0 100 24" fill="currentColor" className="brand-svg">
-        <path d="M12.4 2C6.8 2 2.2 6.4 2 12c.2 5.5 4.8 10 10.4 10 4.1 0 7.7-2.4 9.4-6-1.5 1.5-3.6 2.4-6 2.4-4.8 0-8.8-3.9-9-8.7.2-4.8 4.2-8.7 9-8.7 2.2 0 4.3.8 5.8 2.2.6-.7 1.2-1.3 1.9-1.9C20.6 3.2 16.7 2 12.4 2zm0 4.2c-3.1 0-5.7 2.5-5.8 5.7.1 3.2 2.7 5.7 5.8 5.7 2.2 0 4.1-1.3 5-3.2-1.1.8-2.4 1.3-3.8 1.3-2.6 0-4.7-2.1-4.8-4.7.1-2.6 2.2-4.7 4.8-4.7 1.2 0 2.4.4 3.3 1.1.5-.6 1-1.1 1.6-1.6-1.7-1-3.8-1.6-6.1-1.6z"/>
-        <text x="30" y="17" fontFamily="var(--font-heading)" fontWeight="800" fontSize="13" letterSpacing="1">NVIDIA</text>
+      <svg viewBox="0 0 120 30" fill="currentColor" className="brand-svg">
+        <path d="M14 3C7.5 3 2.2 8.1 2 14.8c.2 6.6 5.5 11.8 12 11.8 4.8 0 9-2.8 11-7.1-1.8 1.8-4.3 2.8-7.1 2.8-5.6 0-10.3-4.6-10.5-10.2.2-5.6 4.9-10.2 10.5-10.2 2.6 0 5 1 6.8 2.6.7-.8 1.4-1.5 2.2-2.2C23.6 4.4 19.1 3 14 3zm0 5c-3.7 0-6.7 3-6.8 6.7.1 3.7 3.1 6.7 6.8 6.7 2.6 0 4.8-1.5 5.9-3.8-1.3 1-2.8 1.5-4.4 1.5-3 0-5.5-2.5-5.6-5.5.1-3 2.6-5.5 5.6-5.5 1.4 0 2.8.5 3.9 1.3.6-.7 1.2-1.3 1.9-1.9C20.3 9 17.3 8 14 8z" fill="#76b900" />
+        <text x="34" y="21" fontFamily="var(--font-heading)" fontWeight="900" fontSize="16" letterSpacing="1.2">NVIDIA</text>
       </svg>
     ),
   },
@@ -19,9 +19,9 @@ const brandLogos = [
     name: "AMD",
     sub: "RYZEN / RADEON",
     svg: (
-      <svg viewBox="0 0 90 24" fill="currentColor" className="brand-svg">
-        <path d="M4 4h7v7H4zm8 0h7v7h-7zm0 8h7v7h-7z" fill="var(--accent-red)"/>
-        <text x="26" y="17" fontFamily="var(--font-heading)" fontWeight="900" fontSize="14" letterSpacing="1.5">AMD</text>
+      <svg viewBox="0 0 110 30" fill="currentColor" className="brand-svg">
+        <path d="M4 5h9v9H4zm10 0h9v9h-9zm0 10h9v9h-9z" fill="#ed1c24"/>
+        <text x="31" y="22" fontFamily="var(--font-heading)" fontWeight="900" fontSize="18" letterSpacing="1.5">AMD</text>
       </svg>
     ),
   },
@@ -29,9 +29,9 @@ const brandLogos = [
     name: "INTEL",
     sub: "CORE ULTRA",
     svg: (
-      <svg viewBox="0 0 85 24" fill="currentColor" className="brand-svg">
-        <circle cx="8" cy="12" r="6" fill="none" stroke="currentColor" strokeWidth="2"/>
-        <text x="20" y="17" fontFamily="var(--font-heading)" fontWeight="800" fontSize="14" letterSpacing="2">intel</text>
+      <svg viewBox="0 0 110 30" fill="currentColor" className="brand-svg">
+        <circle cx="10" cy="15" r="7" fill="none" stroke="#0071c5" strokeWidth="2.5"/>
+        <text x="24" y="22" fontFamily="var(--font-heading)" fontWeight="900" fontSize="18" letterSpacing="2.2" fill="currentColor">intel</text>
       </svg>
     ),
   },
@@ -39,9 +39,9 @@ const brandLogos = [
     name: "CORSAIR",
     sub: "DOMINATOR / RMx",
     svg: (
-      <svg viewBox="0 0 110 24" fill="currentColor" className="brand-svg">
-        <path d="M4 18l5-12 5 12-5-3zm6-11l4 9 4-9-4 2z" opacity="0.8"/>
-        <text x="24" y="17" fontFamily="var(--font-heading)" fontWeight="800" fontSize="12" letterSpacing="2.5">CORSAIR</text>
+      <svg viewBox="0 0 135 30" fill="currentColor" className="brand-svg">
+        <path d="M5 23l6-15 6 15-6-4zm8-14l5 11 5-11-5 2.5z" fill="#f5a623"/>
+        <text x="30" y="21" fontFamily="var(--font-heading)" fontWeight="900" fontSize="14" letterSpacing="3">CORSAIR</text>
       </svg>
     ),
   },
@@ -49,9 +49,9 @@ const brandLogos = [
     name: "ASUS ROG",
     sub: "REPUBLIC OF GAMERS",
     svg: (
-      <svg viewBox="0 0 115 24" fill="currentColor" className="brand-svg">
-        <path d="M4 7c3-3 7-3 10 0l-3 7c-2-2-4-2-6 0z" fill="var(--accent-red)"/>
-        <text x="20" y="17" fontFamily="var(--font-heading)" fontWeight="900" fontSize="12" letterSpacing="1.5">ASUS ROG</text>
+      <svg viewBox="0 0 145 30" fill="currentColor" className="brand-svg">
+        <path d="M4 8c4-4 9-4 13 0l-4 9c-3-3-5-3-8 0z" fill="#ff0033"/>
+        <text x="25" y="21" fontFamily="var(--font-heading)" fontWeight="900" fontSize="15" letterSpacing="1.5">ASUS ROG</text>
       </svg>
     ),
   },
@@ -59,9 +59,9 @@ const brandLogos = [
     name: "SAMSUNG",
     sub: "990 PRO NVMe",
     svg: (
-      <svg viewBox="0 0 110 24" fill="currentColor" className="brand-svg">
-        <ellipse cx="10" cy="12" rx="7" ry="5" fill="none" stroke="currentColor" strokeWidth="1.5"/>
-        <text x="24" y="17" fontFamily="var(--font-heading)" fontWeight="800" fontSize="12" letterSpacing="2">SAMSUNG</text>
+      <svg viewBox="0 0 135 30" fill="currentColor" className="brand-svg">
+        <ellipse cx="12" cy="15" rx="8" ry="6" fill="none" stroke="#1428a0" strokeWidth="2"/>
+        <text x="28" y="21" fontFamily="var(--font-heading)" fontWeight="800" fontSize="14" letterSpacing="2.5">SAMSUNG</text>
       </svg>
     ),
   },
@@ -69,8 +69,8 @@ const brandLogos = [
     name: "G.SKILL",
     sub: "TRIDENT Z5 RGB",
     svg: (
-      <svg viewBox="0 0 100 24" fill="currentColor" className="brand-svg">
-        <text x="4" y="17" fontFamily="var(--font-mono)" fontWeight="900" fontSize="14" letterSpacing="2">G.SKILL</text>
+      <svg viewBox="0 0 120 30" fill="currentColor" className="brand-svg">
+        <text x="2" y="22" fontFamily="var(--font-mono)" fontWeight="900" fontSize="17" letterSpacing="2.5" fill="#e63946">G.SKILL</text>
       </svg>
     ),
   },
@@ -78,9 +78,9 @@ const brandLogos = [
     name: "WD_BLACK",
     sub: "SN850X GEN4",
     svg: (
-      <svg viewBox="0 0 115 24" fill="currentColor" className="brand-svg">
-        <rect x="2" y="6" width="12" height="12" rx="2" fill="none" stroke="currentColor" strokeWidth="2"/>
-        <text x="20" y="17" fontFamily="var(--font-heading)" fontWeight="900" fontSize="12" letterSpacing="1">WD_BLACK</text>
+      <svg viewBox="0 0 140 30" fill="currentColor" className="brand-svg">
+        <rect x="2" y="7" width="16" height="16" rx="3" fill="none" stroke="#005eb8" strokeWidth="2.5"/>
+        <text x="25" y="21" fontFamily="var(--font-heading)" fontWeight="900" fontSize="14" letterSpacing="1.2">WD_BLACK</text>
       </svg>
     ),
   },
@@ -88,9 +88,9 @@ const brandLogos = [
     name: "THERMALTAKE",
     sub: "TOUGHPOWER",
     svg: (
-      <svg viewBox="0 0 130 24" fill="currentColor" className="brand-svg">
-        <circle cx="8" cy="12" r="5" fill="var(--accent-orange)"/>
-        <text x="18" y="17" fontFamily="var(--font-heading)" fontWeight="800" fontSize="11" letterSpacing="1.5">THERMALTAKE</text>
+      <svg viewBox="0 0 155 30" fill="currentColor" className="brand-svg">
+        <circle cx="10" cy="15" r="6" fill="#ff9f43"/>
+        <text x="22" y="21" fontFamily="var(--font-heading)" fontWeight="900" fontSize="13" letterSpacing="1.8">THERMALTAKE</text>
       </svg>
     ),
   },
@@ -98,8 +98,8 @@ const brandLogos = [
     name: "EVGA",
     sub: "SUPERNOVA",
     svg: (
-      <svg viewBox="0 0 85 24" fill="currentColor" className="brand-svg">
-        <text x="4" y="17" fontFamily="var(--font-heading)" fontWeight="900" fontSize="15" letterSpacing="3">EVGA</text>
+      <svg viewBox="0 0 100 30" fill="currentColor" className="brand-svg">
+        <text x="2" y="22" fontFamily="var(--font-heading)" fontWeight="900" fontSize="18" letterSpacing="3.5" fill="#c1121f">EVGA</text>
       </svg>
     ),
   },
@@ -107,23 +107,22 @@ const brandLogos = [
     name: "CRUCIAL",
     sub: "BY MICRON",
     svg: (
-      <svg viewBox="0 0 100 24" fill="currentColor" className="brand-svg">
-        <circle cx="8" cy="12" r="5" fill="none" stroke="var(--accent-cyan)" strokeWidth="2"/>
-        <text x="18" y="17" fontFamily="var(--font-heading)" fontWeight="800" fontSize="13" letterSpacing="1.5">crucial</text>
+      <svg viewBox="0 0 120 30" fill="currentColor" className="brand-svg">
+        <circle cx="10" cy="15" r="6" fill="none" stroke="#00d4ff" strokeWidth="2.5"/>
+        <text x="22" y="21" fontFamily="var(--font-heading)" fontWeight="900" fontSize="16" letterSpacing="1.8">crucial</text>
       </svg>
     ),
   },
 ];
 
 function BrandLogos() {
-  // Duplicate list to achieve continuous seamless marquee loop
   const doubleList = [...brandLogos, ...brandLogos];
 
   return (
     <section className="brand-logos-section">
       <div className="brand-logos-header">
         <span className="brand-logos-tag">[HARDWARE ECOSYSTEM]</span>
-        <span className="brand-logos-title">Supported Architectural Partners & Manufacturers</span>
+        <span className="brand-logos-title">Certified Component Manufacturers & Architectural Partners</span>
       </div>
 
       <div className="marquee-wrapper">
@@ -141,4 +140,3 @@ function BrandLogos() {
 }
 
 export default BrandLogos;
-
