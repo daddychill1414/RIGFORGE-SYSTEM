@@ -1,7 +1,10 @@
 // ============================================================
 // ComponentSelector.jsx
-// Renders all part categories with search, category filtering & toggle collapse
-// Props: allParts (object), selectedParts (object), onSelectPart (function)
+// Renders all part categories with:
+// - Search filter
+// - Category tabs
+// - Sort by: Default, Price (Low/High), Price (High/Low), TDP (Highest)
+// - Collapsible category accordions
 // ============================================================
 
 import { useState } from "react";
@@ -26,6 +29,7 @@ const categoryShortTags = {
 function ComponentSelector({ allParts, selectedParts, onSelectPart }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeTab, setActiveTab] = useState("ALL");
+  const [sortBy, setSortBy] = useState("default");
   const [collapsedCategories, setCollapsedCategories] = useState({});
 
   const toggleCategory = (cat) => {
@@ -35,15 +39,35 @@ function ComponentSelector({ allParts, selectedParts, onSelectPart }) {
     }));
   };
 
-  const filterParts = (parts) => {
-    if (!searchQuery.trim()) return parts;
-    const q = searchQuery.toLowerCase();
-    return parts.filter(
-      (part) =>
-        part.name.toLowerCase().includes(q) ||
-        part.brand.toLowerCase().includes(q) ||
-        part.specs.toLowerCase().includes(q)
-    );
+  // Sort and filter logic
+  const processParts = (parts) => {
+    let list = [...parts];
+
+    // Filter
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase();
+      list = list.filter(
+        (part) =>
+          part.name.toLowerCase().includes(q) ||
+          part.brand.toLowerCase().includes(q) ||
+          part.specs.toLowerCase().includes(q)
+      );
+    }
+
+    // Sort
+    if (sortBy === "price-asc") {
+      list.sort((a, b) => a.price - b.price);
+    } else if (sortBy === "price-desc") {
+      list.sort((a, b) => b.price - a.price);
+    } else if (sortBy === "tdp-desc") {
+      list.sort((a, b) => {
+        const valA = a.category === "PSU" ? a.wattage : a.tdp;
+        const valB = b.category === "PSU" ? b.wattage : b.tdp;
+        return valB - valA;
+      });
+    }
+
+    return list;
   };
 
   const categories = Object.keys(allParts);
@@ -57,25 +81,46 @@ function ComponentSelector({ allParts, selectedParts, onSelectPart }) {
         </span>
       </div>
 
-      {/* Filter / Search Bar */}
+      {/* Catalog Controls: Search, Sort Dropdown & Category Tabs */}
       <div className="catalog-controls">
-        <div className="search-input-wrapper">
-          <span className="search-icon">SRC //</span>
-          <input
-            type="text"
-            className="search-input"
-            placeholder="Search specs, chipsets, or brands..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          {searchQuery && (
-            <button
-              className="search-clear-btn"
-              onClick={() => setSearchQuery("")}
+        <div className="catalog-filter-bar">
+          {/* Search Bar */}
+          <div className="search-input-wrapper">
+            <span className="search-icon">SRC //</span>
+            <input
+              type="text"
+              className="search-input"
+              placeholder="Search specs, chipsets, or brands..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            {searchQuery && (
+              <button
+                className="search-clear-btn"
+                onClick={() => setSearchQuery("")}
+              >
+                CLEAR
+              </button>
+            )}
+          </div>
+
+          {/* Sort Dropdown */}
+          <div className="sort-wrapper">
+            <label className="sort-label" htmlFor="catalog-sort">
+              SORT //
+            </label>
+            <select
+              id="catalog-sort"
+              className="sort-select"
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
             >
-              CLEAR
-            </button>
-          )}
+              <option value="default">Default Order</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="tdp-desc">Power / Wattage (High)</option>
+            </select>
+          </div>
         </div>
 
         {/* Category Filter Pills */}
@@ -102,7 +147,7 @@ function ComponentSelector({ allParts, selectedParts, onSelectPart }) {
       {Object.entries(allParts).map(([category, parts]) => {
         if (activeTab !== "ALL" && activeTab !== category) return null;
 
-        const filteredParts = filterParts(parts);
+        const filteredParts = processParts(parts);
         if (filteredParts.length === 0 && searchQuery) return null;
 
         const isCollapsed = collapsedCategories[category];
@@ -125,7 +170,7 @@ function ComponentSelector({ allParts, selectedParts, onSelectPart }) {
                   </span>
                   {selected && (
                     <span className="category-selected-tag">
-                      Equipped: {selected.name}
+                      Equipped: {selected.name} (₱{selected.price.toLocaleString()})
                     </span>
                   )}
                 </div>

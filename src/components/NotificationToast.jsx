@@ -18,3 +18,4 @@ function NotificationToast({ message, isVisible, type = "info" }) {
 }
 
 export default NotificationToast;
+

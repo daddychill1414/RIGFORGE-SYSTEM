@@ -1,7 +1,7 @@
 // ============================================================
 // App.jsx — Root Component
 // Manages application state, theme switching (Dark/Light),
-// and passes props to children.
+// Presets, Bottleneck Compatibility Engine, and passes props.
 // ============================================================
 
 import { useState, useEffect } from "react";
@@ -9,6 +9,8 @@ import { useState, useEffect } from "react";
 // Components
 import ParallaxBackground from "./components/ParallaxBackground";
 import Header from "./components/Header";
+import PresetSelector from "./components/PresetSelector";
+import CompatibilityEngine from "./components/CompatibilityEngine";
 import ComponentSelector from "./components/ComponentSelector";
 import BuildSummary from "./components/BuildSummary";
 import PowerMeter from "./components/PowerMeter";
@@ -16,7 +18,7 @@ import NotificationModal from "./components/NotificationModal";
 import NotificationToast from "./components/NotificationToast";
 
 // Data
-import { allParts } from "./data/parts";
+import { allParts, presetBuilds } from "./data/parts";
 
 function App() {
   // ---- Theme State: 'dark' or 'light' ----
@@ -26,7 +28,6 @@ function App() {
     setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   };
 
-  // Sync theme to document body dataset/class
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
@@ -80,10 +81,19 @@ function App() {
   // ---- Event handlers ----
 
   const handleSelectPart = (category, part) => {
-    setSelectedParts((prev) => ({
-      ...prev,
-      [category]: prev[category]?.id === part.id ? null : part,
-    }));
+    setSelectedParts((prev) => {
+      const isDeselect = prev[category]?.id === part.id;
+      return {
+        ...prev,
+        [category]: isDeselect ? null : part,
+      };
+    });
+  };
+
+  const handleApplyPreset = (preset) => {
+    setSelectedParts({ ...preset.parts });
+    setBuildName(preset.name);
+    showToast(`Loaded "${preset.name}" preset build.`, "success");
   };
 
   const handleClearBuild = () => {
@@ -150,16 +160,31 @@ function App() {
             Evaluate component specifications, cross-reference pricing in Philippine Pesos,
             and audit power draw headroom in real-time.
           </p>
+
+          {/* Preset Builder Selector */}
+          <PresetSelector
+            presets={presetBuilds}
+            onApplyPreset={handleApplyPreset}
+          />
         </section>
 
         {/* Main two-column layout */}
         <main className="main-content">
-          {/* Left: Part selector with search */}
-          <ComponentSelector
-            allParts={allParts}
-            selectedParts={selectedParts}
-            onSelectPart={handleSelectPart}
-          />
+          {/* Left: Part selector with search & sort */}
+          <div className="left-column">
+            {/* Real-time Hardware Synergy Diagnostics */}
+            <CompatibilityEngine
+              selectedParts={selectedParts}
+              totalWattage={totalWattage}
+              psuWattage={psuWattage}
+            />
+
+            <ComponentSelector
+              allParts={allParts}
+              selectedParts={selectedParts}
+              onSelectPart={handleSelectPart}
+            />
+          </div>
 
           {/* Right: Sticky sidebar */}
           <aside className="summary-sidebar">
