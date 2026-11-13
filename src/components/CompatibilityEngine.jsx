@@ -112,3 +112,4 @@ function CompatibilityEngine({ selectedParts, totalWattage, psuWattage }) {
 }
 
 export default CompatibilityEngine;
+
